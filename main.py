@@ -11,8 +11,6 @@ import os
 import json
 import pandas as pd
 import numpy as np
-from datetime import date, timedelta, datetime
-import matplotlib.pyplot as plt
 
 import google.generativeai as genai
 GOOGLE_API_KEY = "AIzaSyDp3xiMDHVsYO7BKZh13-BvhnGK9aS4sFs"
@@ -24,9 +22,7 @@ GOOGLE_API_KEY = "AIzaSyDp3xiMDHVsYO7BKZh13-BvhnGK9aS4sFs"
 import whisper
 import pyaudio 
 import wave
-import subprocess
 import json
-from vosk import Model, KaldiRecognizer
 
 #Imports for regression
 import joblib
@@ -34,9 +30,7 @@ import joblib
 # Import standard dependencies
 import cv2
 import os
-import random
 import numpy as np
-from matplotlib import pyplot as plt
 import keras
 
 from cvzone.FaceMeshModule import FaceMeshDetector
@@ -249,13 +243,7 @@ while cap.isOpened():
     
     
     # Verification trigger
-        agg_verification = 0
         proxim = False
-        # if key in [27, ord('a'), ord('A')]:
-        #     for i in range(5):
-        #         imgname = os.path.join('application_data', 'verification_images', '{}_{}.jpg'.format(name, uuid.uuid1()))
-        #         cv2.imwrite(imgname, facess)
-
         if d<45:
             proxim = True
 

@@ -1,8 +1,10 @@
 import google.generativeai as genai
 
 import PIL.Image
+import os
 
-def exp_recog(img):
+def exp_recog():
+    img = PIL.Image.open(os.path.join('application_data','input_image','input_image.jpg'))
     GOOGLE_API_KEY = "AIzaSyCFb7nxEauCLQ7FAW2odYHkD1oJNmCx264"
 
     genai.configure(api_key=GOOGLE_API_KEY)
@@ -11,16 +13,16 @@ def exp_recog(img):
 
     response = model.generate_content(['''
                                        Classify the emotion of the person in the image based on the following emotions - 
-                                       1. Reply 'Positive' if the emotion is positive (eg. smiling, laughing, comforting)
-                                       2. Reply 'Negative' if the emotion if negative (eg. frowning, grimacing, anger)
-                                       3. Reply 'Neutral' if the emotion is neutral (eg. poker face, neutral stare)
-                                       4. Reply 'Other' if the emotion is other than the above categories (eg. crying, confused)
+                                       'positive' = 4 (smiling, laughing, comforting), 
+                                       'neutral' = 3 (poker face, neutral stare),
+                                       'negative' = 2 (frowning, grimacing, anger), or 
+                                       'other' = 1 (crying, confused).
 
-                                       ## ONLY REPLY IN ONE WORD 
+                                       ## ONLY REPLY IN ONE NUMBER RANGING FROM 1-4 based on the emotion of the person
                                        ''', img])
-    response = response.text
+    res = response.text
 
-    return response
+    return res
 
 # img = PIL.Image.open('smile.jpg')
 # print(exp_recog(img))

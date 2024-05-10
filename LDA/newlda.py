@@ -29,6 +29,8 @@ from nltk.stem import WordNetLemmatizer
 from nltk.stem.porter import *
 from nltk.tokenize import word_tokenize, sent_tokenize
 from .gemini_LDA import lda_to_keywords
+import nltk
+# nltk.download('wordnet')
 
 def lemmatize_stemming(text):
     wnl = WordNetLemmatizer()
@@ -85,8 +87,8 @@ def lda_full(ogtext):
         # print("Topic: {} \nWords: {}".format(idx, topic))
         # print("\n")
 
-    keywords = lda_to_keywords(ogtext, lda_string)
-    return keywords
+    lda_score = lda_to_keywords(ogtext, lda_string)
+    return lda_score
 
 # response = lda_full(text)
 # print('response', response)

@@ -18,18 +18,20 @@ def lda_to_keywords(text, lda_string):
     output = {lda_string}
 
     % Based on the above data, describe each topic in one keyword/topic name.
-
-    % Output format
     ['keyword1','keyword2','keyword3','keyword4','keyword5']
 
+    %OUTPUT FORMAT
+    Calculate 20\% for keywords-topic closeness to conversation and 80\% for danger assessment to calculate a final LDA Topic Relevance Score ranging from 1 to 5.
+
     ## Strictly follow the output format
-    ## Focus on the LDA Topics first, use the text conversation only for reference.
+    ## Stritly output is single number ranging from 1-5
 """
     # messages = system_prompt.format(demographics, symptoms)
     chat = model.start_chat(history=[])
     response = chat.send_message(system_prompt)
-    response = response.text
-    return response
+    res = response.text
+    print("LDA", res)
+    return res
 
 text = '''
 Hey John, how are you doing today?
